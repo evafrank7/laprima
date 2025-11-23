@@ -21,7 +21,7 @@ export default function Navbar({ cartCount = 0 }: { cartCount?: number }) {
 
     return (
         <nav className="w-full bg-zinc-700 px-4 py-4">
-            <div className="flex justify-between items-center">
+            <div className="flex items-center">
                 {/* Sidebar trigger */}
                 <div className="flex items-center md:hidden">
                     <Sheet open={open} onOpenChange={setOpen}>
@@ -32,21 +32,22 @@ export default function Navbar({ cartCount = 0 }: { cartCount?: number }) {
                             side="left"
                             className="bg-zinc-800 text-white border-r border-white/10"
                         >
-                            <SheetHeader> 
+                            <SheetHeader>
+                                <SheetTitle className="sr-only">Menu</SheetTitle>
                                 <div className="flex justify-center py-4">
-                                  <Image
-                                    src={laprimaLogo}
-                                    alt="La Prima Coffee Logo"
-                                    width={140}
-                                    height={140}
-                                  />
+                                    <Image
+                                        src={laprimaLogo}
+                                        alt="La Prima Coffee Logo"
+                                        width={140}
+                                        height={140}
+                                    />
                                 </div>
                             </SheetHeader>
                             <div className="mt-6 flex flex-col gap-4">
                                 {navLinks.map((label) => (
                                     <button
                                         key={label}
-                                        className="text-base text-left text-white hover:!text-[#0076bf]"
+                                        className="text-base text-center text-white hover:!text-[#0076bf]"
                                     >
                                         {label}
                                     </button>
@@ -57,7 +58,10 @@ export default function Navbar({ cartCount = 0 }: { cartCount?: number }) {
                 </div>
 
                 {/* La Prima Logo */}
-                <div className={`flex justify-center md:justify-start ${open ? "hidden" : ""}`}>
+                <div
+                    className={`flex flex-1 items-center justify-center md:justify-start ${open ? "hidden md:flex" : ""
+                        }`}
+                >
                     <div className="flex-shrink-0">
                         <Image
                             src={laprimaLogo}
@@ -70,7 +74,7 @@ export default function Navbar({ cartCount = 0 }: { cartCount?: number }) {
                 </div>
 
                 {/* desktop nav, cart, and mobile cart */}
-                <div className="w-full flex justify-end items-center gap-3 px-10 py-4">
+                <div className="flex items-center gap-3 ml-auto px-2 md:px-10">
                     <div className="hidden md:flex items-center gap-3">
                         <NavigationMenu>
                             <NavigationMenuList className="flex items-center gap-6 text-white">
