@@ -1,60 +1,110 @@
+"use client"
 import {
     NavigationMenu,
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import Image from "next/image";
 import laprimaLogo from "@/public/images/LaPrima-logo-1.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { Menu } from "lucide-react";
+import { useState } from "react";
 
-export default function Home({ cartCount = 0 }: { cartCount?: number }) {
+const navLinks = ["Shop", "About", "Locations", "Contact"];
+
+export default function Navbar({ cartCount = 0 }: { cartCount?: number }) {
+    const [open, setOpen] = useState(false);
+
     return (
-        <div className="w-full flex items-center justify-between px-30 py-4 bg-zinc-700">
-            <div>
-                <Image
-                    src={laprimaLogo}
-                    alt="La Prima Coffee Logo"
-                    width={150}
-                    height={150}
-                    className="cursor-pointer"
-                />
+        <nav className="w-full bg-zinc-700 px-4 py-4">
+            <div className="flex justify-between items-center">
+                {/* Sidebar trigger */}
+                <div className="flex items-center md:hidden">
+                    <Sheet open={open} onOpenChange={setOpen}>
+                        <SheetTrigger className="inline-flex items-center justify-center rounded-md border border-white/40 px-2 py-2">
+                            <Menu className="h-6 w-6 text-white" />
+                        </SheetTrigger>
+                        <SheetContent
+                            side="left"
+                            className="bg-zinc-800 text-white border-r border-white/10"
+                        >
+                            <SheetHeader> 
+                                <div className="flex justify-center py-4">
+                                  <Image
+                                    src={laprimaLogo}
+                                    alt="La Prima Coffee Logo"
+                                    width={140}
+                                    height={140}
+                                  />
+                                </div>
+                            </SheetHeader>
+                            <div className="mt-6 flex flex-col gap-4">
+                                {navLinks.map((label) => (
+                                    <button
+                                        key={label}
+                                        className="text-base text-left text-white hover:!text-[#0076bf]"
+                                    >
+                                        {label}
+                                    </button>
+                                ))}
+                            </div>
+                        </SheetContent>
+                    </Sheet>
+                </div>
+
+                {/* La Prima Logo */}
+                <div className={`flex justify-center md:justify-start ${open ? "hidden" : ""}`}>
+                    <div className="flex-shrink-0">
+                        <Image
+                            src={laprimaLogo}
+                            alt="La Prima Coffee Logo"
+                            width={150}
+                            height={150}
+                            className="cursor-pointer h-auto w-24 md:w-36 lg:w-40"
+                        />
+                    </div>
+                </div>
+
+                {/* desktop nav, cart, and mobile cart */}
+                <div className="w-full flex justify-end items-center gap-3 px-10 py-4">
+                    <div className="hidden md:flex items-center gap-3">
+                        <NavigationMenu>
+                            <NavigationMenuList className="flex items-center gap-6 text-white">
+                                {navLinks.map((label) => (
+                                    <NavigationMenuItem key={label}>
+                                        <NavigationMenuLink className="bg-transparent hover:bg-transparent hover:!text-[#0076bf]">
+                                            {label}
+                                        </NavigationMenuLink>
+                                    </NavigationMenuItem>
+                                ))}
+                            </NavigationMenuList>
+                        </NavigationMenu>
+
+                        <button
+                            type="button"
+                            className="relative inline-flex items-center text-white hover:!text-[#0076bf] gap-3"
+                            aria-label="Open shopping cart"
+                        >
+                            <FontAwesomeIcon icon={faShoppingCart} className="h-6 w-6" />
+                            <span className="ml-1">{cartCount}</span>
+                        </button>
+                    </div>
+
+                    {/* Mobile cart only */}
+                    <button
+                        type="button"
+                        className="relative inline-flex items-center text-white gap-2 md:hidden"
+                        aria-label="Open shopping cart"
+                    >
+                        <FontAwesomeIcon icon={faShoppingCart} className="h-6 w-6" />
+                        <span className="ml-1 text-sm">{cartCount}</span>
+                    </button>
+                </div>
             </div>
-
-            <div className="flex items-center gap-3">
-                <NavigationMenu>
-                    <NavigationMenuList className="flex items-center gap-6 text-white">
-                    
-                        <NavigationMenuItem>
-                            <NavigationMenuLink className="bg-transparent hover:bg-transparent hover:text-blue-600">Shop</NavigationMenuLink>
-                        </NavigationMenuItem>
-
-                        <NavigationMenuItem>
-                            <NavigationMenuLink className="bg-transparent hover:bg-transparent hover:text-blue-600">About</NavigationMenuLink>
-                        </NavigationMenuItem>
-
-                        <NavigationMenuItem>
-                            <NavigationMenuLink className="bg-transparent hover:bg-transparent hover:text-blue-600">Locations</NavigationMenuLink>
-                        </NavigationMenuItem>
-
-                        <NavigationMenuItem>
-                            <NavigationMenuLink className="bg-transparent hover:bg-transparent hover:text-blue-600">Contact</NavigationMenuLink>
-                        </NavigationMenuItem>
-                    </NavigationMenuList>
-                </NavigationMenu>
-
-                <button
-                    type="button"
-                    className="relative inline-flex items-center text-white hover:text-blue-600 gap-3"
-                    aria-label="Open shopping cart"
-                // Make cart clickable here, as well as implement counting of items?
-                >
-                    <FontAwesomeIcon icon={faShoppingCart} className="h-6 w-6" />
-                    <span className="ml-1">{cartCount}</span>
-                </button>
-            </div>
-        </div>
+        </nav>
     );
 }
