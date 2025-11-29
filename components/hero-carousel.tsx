@@ -10,22 +10,21 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel"
 
-// TODO: Replace these with your actual hero images in /public/images
 const HERO_IMAGES = [
     {
-        src: "/images/hero-1.jpg",
+        src: "/images/carousel-images/holiday.png",
         alt: "Freshly brewed espresso being poured into a cup",
         headline: "Small-Batch Roasted in Pittsburgh",
         subheadline: "Serving the city since 1988 with bold, carefully crafted coffee.",
     },
     {
-        src: "/images/hero-2.jpg",
+        src: "/images/carousel-images/beans.png",
         alt: "Barista steaming milk behind the counter",
         headline: "Crafted by Baristas, Loved by Locals",
         subheadline: "Stop by for your daily ritual or linger with a perfectly pulled shot.",
     },
     {
-        src: "/images/hero-3.jpg",
+        src: "/images/carousel-images/coffee.png",
         alt: "Cozy cafe interior with people enjoying coffee",
         headline: "Your Neighborhood Coffee Institution",
         subheadline: "A warm space for good coffee, good work, and good conversation.",
@@ -50,8 +49,9 @@ export default function HeroCarousel() {
                                             priority={index === 0}
                                             className="object-cover"
                                         />
-                                        {/* Dark overlay to make text readable */}
+                                        {/* Dark overlay to make text readable 
                                         <div className="absolute inset-0 bg-black/40" />
+                                        */}
                                     </div>
                                 </CardContent>
                             </Card>
