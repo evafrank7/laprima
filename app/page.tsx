@@ -40,33 +40,37 @@ export default function Home() {
           </div>
 
           <Image src="/images/merch-image.png" alt="Merch Image" width={1300} height={1000} className="max-w-full h-auto mx-auto block p-15" />
-          <div className="p-5">
-            <h3 className="text-center uppercase text-2xl font-bold p-4" style={{ color: "#0076bf" }}> A Pittsburgh Tradition </h3>
+          <div className="p-2">
+            <h3 className="text-center uppercase text-2xl font-bold pb-4" style={{ color: "#0076bf" }}> A Pittsburgh Tradition </h3>
             <p className="text-center font-bold text-lg pb-7"> Take a piece of our caffè home with you </p>
             <div className="flex justify-center pb-7">
               <Button size="lg" className="center-align uppercase justify-center p-8" style={{ backgroundColor: "#0076bf" }}> Shop All Merch </Button>
             </div>
           </div>
 
-          <div className="grid grid-cols-4 gap-3">
-            <div className="col">
-              <h3> La Prima x Astrobotic T-Shirt </h3>
-              <p> We have partnered with Pittsburgh's own Astrobotic for an out of this world design</p>
+          <div className="grid grid-cols-4 gap-3 pb-10">
+            <div className="col p-5">
+              <Image src="/images/merch-images/astro-shirt.png" alt="La Prima x Astrobotic T-Shirt" width={400} height={400} className="max-w-full h-auto p-2" />
+              <h3 className="text-center uppercase text-lg font-bold" style={{ color: "#0076bf" }}>La Prima x Astrobotic T-Shirt </h3>
+              <p className="text-center"> We have partnered with Pittsburgh's own Astrobotic for an out of this world design</p>
             </div>
 
-            <div className="col">
-              <h3> La Prima x Astrobotic T-Shirt </h3>
-              <p> We have partnered with Pittsburgh's own Astrobotic for an out of this world design</p>
+            <div className="col p-5">
+            <Image src="/images/merch-images/oak-shirt.png" alt="La Prima Oak" width={400} height={400} className="max-w-full h-auto p-2" />
+              <h3 className="text-center uppercase text-lg font-bold" style={{ color: "#0076bf" }}>LP Seal T-Shirt - French Oak </h3>
+              <p className="text-center"> Our La Prima Espresso Co. seal design printed on french oak dyed ultra-durable combed cotton</p>
             </div>
 
-            <div className="col">
-              <h3> La Prima x Astrobotic T-Shirt </h3>
-              <p> We have partnered with Pittsburgh's own Astrobotic for an out of this world design</p>
+            <div className="col p-5">
+            <Image src="/images/merch-images/burro-shirt.png" alt="La Prima Burro" width={400} height={400} className="max-w-full h-auto p-2" />
+              <h3 className="text-center uppercase text-lg font-bold" style={{ color: "#0076bf" }}>LP Banner T-Shirt - Burro </h3>
+              <p className="text-center"> Our La Prima Espresso Co. banner printed on burro brown dyed ultra-durable combed cotton</p>
             </div>
 
-            <div className="col">
-              <h3> La Prima x Astrobotic T-Shirt </h3>
-              <p> We have partnered with Pittsburgh's own Astrobotic for an out of this world design</p>
+            <div className="col p-5">
+            <Image src="/images/merch-images/mugs.png" alt="La Prima Mugs" width={400} height={400} className="max-w-full h-auto p-2" />
+              <h3 className="text-center uppercase text-lg font-bold" style={{ color: "#0076bf" }}>La Prima Mugs </h3>
+              <p className="text-center"> Enjoy La Prima coffee in style with our new 15oz. ceramic mug</p>
             </div>
           </div>
 

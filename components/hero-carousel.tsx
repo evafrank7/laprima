@@ -13,21 +13,31 @@ import {
 const HERO_IMAGES = [
     {
         src: "/images/carousel-images/holiday.png",
-        alt: "Freshly brewed espresso being poured into a cup",
-        headline: "Small-Batch Roasted in Pittsburgh",
-        subheadline: "Serving the city since 1988 with bold, carefully crafted coffee.",
+        alt: "Holiday Theme",
+        headline: "BUON NATALE",
+        subheadline: "La Prima's Holiday Blend returns",
+        primaryCta: "Add to your Christmas List",
     },
     {
         src: "/images/carousel-images/beans.png",
-        alt: "Barista steaming milk behind the counter",
-        headline: "Crafted by Baristas, Loved by Locals",
-        subheadline: "Stop by for your daily ritual or linger with a perfectly pulled shot.",
+        alt: "Beans pouring",
+        headline: "La Prima Espresso Co",
+        subheadline: "Coffee roaster, Caffès, commerical equipment sales",
+        primaryCta: "Shop Now",
     },
     {
+
         src: "/images/carousel-images/coffee.png",
-        alt: "Cozy cafe interior with people enjoying coffee",
-        headline: "Your Neighborhood Coffee Institution",
-        subheadline: "A warm space for good coffee, good work, and good conversation.",
+        alt: "Coffee cup",
+        headlineLeft: "Visit our Caffès",
+        locations: [
+            { name: "The Strip", address: "205 21st Street" },
+            { name: "Downtown", address: "1100 Smallman Street" },
+            { name: "CMU", address: "Wean Hall & Gates Hall" },
+            { name: "Oakland", address: "3400 Fifth Ave" },
+        ],
+        primaryButtonLeft: "Locations & Hours",
+
     },
 ]
 
@@ -39,7 +49,7 @@ export default function HeroCarousel() {
                     {HERO_IMAGES.map((slide, index) => (
                         <CarouselItem key={index} className="w-full">
                             <Card className="border-0 rounded-none shadow-none py-0">
-                                <CardContent className="relative flex h-screen w-full items-center justify-center p-0">
+                                <CardContent className="relative flex h-screen w-full items-center justify-center">
                                     {/* Background Image */}
                                     <div className="absolute inset-0">
                                         <Image
@@ -49,9 +59,45 @@ export default function HeroCarousel() {
                                             priority={index === 0}
                                             className="object-cover"
                                         />
-                                        {/* Dark overlay to make text readable 
-                                        <div className="absolute inset-0 bg-black/40" />
-                                        */}
+                                    </div>
+
+                                    {/* Text + Buttons Overlay */}
+                                    <div className="relative z-10 flex h-full w-full flex-col items-center justify-center px-4 text-white">
+                                        <h2 className="text-3xl md:text-5xl font-bold uppercase mb-3" style={{ color: "#0076bf" }}>
+                                            {slide.headline}
+                                        </h2>
+                                        <h2 className="text-3xl md:text-5xl font-bold uppercase flex w-full flex-col self-start text-left pl-25" style={{ color: "#0076bf" }}>
+                                            {slide.headlineLeft}
+                                        </h2>
+                                        <p className="max-w-xl text-base md:text-lg lg:text-xl drop-shadow-md mb-6">
+                                            {slide.subheadline}
+                                        </p>
+                                        {slide.locations && (
+                                            <div className="flex w-full flex-col self-start text-left pl-25 space-y-2">
+                                                {slide.locations.map((loc, i) => (
+                                                    <div key={i}>
+                                                        <p className="font-semibold text-lg uppercase" style={{ color: "#0076bf" }}>{loc.name}</p>
+                                                        <p className="text-lg uppercase">{loc.address}</p>
+                                                    </div>
+                                                ))}
+                                                {slide.primaryButtonLeft && (
+                                                    <button className="inline-flex items-center p-3 text-sm font-medium self-start text-left"
+                                                        style={{ backgroundColor: "#0076bf", color: "white", borderRadius: "4px" }}>
+                                                        {slide.primaryButtonLeft}
+                                                    </button>
+                                                )}
+                                            </div>
+                                        )}
+                                        <div>
+                                            {slide.primaryCta && (
+                                                <button
+                                                    className="inline-flex items-center p-5 text-sm font-medium"
+                                                    style={{ backgroundColor: "#0076bf", color: "white", borderRadius: "4px" }}
+                                                >
+                                                    {slide.primaryCta}
+                                                </button>
+                                            )}
+                                        </div>
                                     </div>
                                 </CardContent>
                             </Card>
